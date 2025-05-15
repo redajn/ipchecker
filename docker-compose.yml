@@ -1,0 +1,27 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:9292"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    entrypoint: .docker/entrypoints/app.sh
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
