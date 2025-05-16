@@ -10,6 +10,8 @@ gem 'puma'
 gem 'rack'
 gem 'rackup'
 gem 'sequel'
+gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sinatra', '~> 4.1'
 gem 'sinatra-contrib'
 

@@ -1,0 +1,7 @@
+:concurrency: 100
+:queues:
+  - default
+:cron:
+  ping_every_minute:
+    cron: "* * * * *"
+    class: "EnqueuePingWorker"
