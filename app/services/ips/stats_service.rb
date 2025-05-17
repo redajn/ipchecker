@@ -38,13 +38,7 @@ module Ips
       row = DB[sql, ip.id, from, to].first
       return Failure(code: :not_found) if row[:total].nil? || row[:total].zero?
 
-      Success(
-        {
-          ip: ip.ip,
-          from: from_s,
-          to: to_s,
-        }.merge(format_stats_row(row))
-      )
+      Success({ ip: ip.ip, from: from_s, to: to_s }.merge(format_stats_row(row)))
     end
 
     def format_stats_row(row)
