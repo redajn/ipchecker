@@ -4,4 +4,8 @@
 :cron:
   ping_every_minute:
     cron: "* * * * *"
-    class: "EnqueuePingWorker"
+    class: "EnqueuePingPerformingWorker"
+
+  create_partition_every_monday:
+    cron: "0 2 * * 1"
+    class: "CreateNextWeekPartitionWorker"

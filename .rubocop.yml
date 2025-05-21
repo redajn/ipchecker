@@ -2,10 +2,8 @@ AllCops:
   TargetRubyVersion: 3.4
   NewCops: enable
   Exclude:
-    - 'db/schema.rb'
-
-  Exclude:
     - 'vendor/**/*'
+    - 'db/migrations/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false

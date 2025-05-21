@@ -1,6 +1,8 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.app
     ports:
       - "3000:9292"
     stdin_open: true

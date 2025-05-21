@@ -75,6 +75,10 @@ RSpec.describe 'IPs API', type: :request do
   end
 
   describe 'GET /ips/:id/stats' do
+    before do
+      Ping.unrestrict_primary_key
+    end
+
     let!(:ip) { Ip.create(ip: '1.2.3.4', enabled: true) }
     before do
       Ping.create(ip_id: ip.id, rtt: 50.0, success: true,  created_at: Time.now - 60)

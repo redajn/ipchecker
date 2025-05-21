@@ -1,10 +1,6 @@
-db_url =
-  case ENV.fetch('RACK_ENV', 'development')
-  when 'test'
-    "#{ENV.fetch('DATABASE_URL')}_test"
-  else
-    ENV.fetch('DATABASE_URL')
-  end
+if ENV['RACK_ENV'] == 'test'
+  ENV['DATABASE_URL'] = "postgres://#{ENV['DB_USER']}:#{ENV['DB_PASSWORD']}@#{ENV['DB_HOST']}:5432/ipchecker_db_test"
+end
 
-DB = Sequel.connect(db_url)
+DB = Sequel.connect(ENV.fetch('DATABASE_URL'))
 Sequel::Model.db = DB

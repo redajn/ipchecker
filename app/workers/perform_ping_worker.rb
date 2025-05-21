@@ -1,6 +1,6 @@
 require 'sidekiq'
 
-class PingWorker
+class PerformPingWorker
   include Sidekiq::Worker
 
   sidekiq_options queue: :default, retry: true
